@@ -372,14 +372,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 470719840}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.00000002322595, y: -0.824267, z: 0.000000017487386, w: 0.5662012}
   m_LocalPosition: {x: 0, y: 0.4882, z: 0.0114}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4607132950384370144}
   m_Father: {fileID: 1890798296163943151}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -111.02801, z: 0}
 --- !u!114 &470719842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -418,14 +418,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 592480400}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: 0.000000014901158, z: 0.2981823, w: 0.9545089}
   m_LocalPosition: {x: 0, y: 0.2846, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1890798296163943151}
   m_Father: {fileID: 657691763768410118}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 34.697002}
 --- !u!114 &592480402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -464,14 +464,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 671404951}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.002273516, y: -0.0003844035, z: -0.38324994, w: 0.92364186}
   m_LocalPosition: {x: 0, y: 0.673, z: 0.012}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4833762500611341218}
   m_Father: {fileID: 4607132950384370144}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0.224, y: -0.141, z: -45.071003}
 --- !u!114 &671404953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -602,14 +602,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1818058292}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.00000006732973, y: 0.23685312, z: 0.00000005246542, w: 0.9715455}
   m_LocalPosition: {x: 0, y: 0.844, z: 0.0229}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4428643878821285036}
   m_Father: {fileID: 4833762500611341218}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 27.402, z: 0}
 --- !u!114 &1818058294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -648,14 +648,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1904044671}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.000000031317988, y: -0.000000014901159, z: 0.4598012, w: 0.88802195}
   m_LocalPosition: {x: 0, y: 0.9615, z: 0.0218}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2628038337037754732}
   m_Father: {fileID: 4428643878821285036}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 54.749004}
 --- !u!114 &1904044673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1590,6 +1590,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5006512734929026139}
+  - component: {fileID: 8296172669074607689}
   m_Layer: 0
   m_Name: Kinova_Final
   m_TagString: Untagged
@@ -1597,6 +1598,36 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8296172669074607689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8296172669074607688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3035d55387ce1ea40acc3527fe494db0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thetas:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  theta0: {fileID: 1998719025}
+  theta1: {fileID: 592480401}
+  theta2: {fileID: 470719841}
+  theta3: {fileID: 671404952}
+  theta4: {fileID: 1818058293}
+  theta5: {fileID: 1904044672}
+  theta6: {fileID: 1956960065}
 --- !u!23 &8470450447009028931
 MeshRenderer:
   m_ObjectHideFlags: 0
