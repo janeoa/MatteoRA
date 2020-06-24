@@ -7,8 +7,10 @@ using System.Text;
 using System.Threading;
 using UnityEngine;
 
+//[RequireComponent(typeof(AudioSource))]
 public class controlOverTCP : MonoBehaviour
 {
+	public float sounddefidor = 5.0f;
 	public float[] thetas;
 	public Transform theta0;
 	public Transform theta1;
@@ -17,6 +19,11 @@ public class controlOverTCP : MonoBehaviour
 	public Transform theta4;
 	public Transform theta5;
 	public Transform theta6;
+	public float[] dt;
+	public float[] oldT;
+	public AudioSource[] audioData;
+	public AudioClip wheelSpin;
+	private int frames = 0;
 
 	#region private members 	
 	/// <summary> 	
@@ -38,23 +45,68 @@ public class controlOverTCP : MonoBehaviour
 	void Start()
 	{
 		thetas = new float[7];
+		dt = new float[7];
+		oldT = new float[7];
+		//audioData = new AudioSource[7];
 
 		// Start TcpServer background thread 		
 		tcpListenerThread = new Thread(new ThreadStart(ListenForIncommingRequests));
 		tcpListenerThread.IsBackground = true;
 		tcpListenerThread.Start();
+
+		//audioData[] = GetComponent<AudioSource>();
+		
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
-		theta0.localEulerAngles = new Vector3(0, thetas[0]*57.2958f, 0);
-		theta1.localEulerAngles = new Vector3(0, 0, thetas[1]*57.2958f);
-		theta2.localEulerAngles = new Vector3(0, thetas[2]*57.2958f, 0);
-		theta3.localEulerAngles = new Vector3(0, 0, thetas[3]*57.2958f);
-		theta4.localEulerAngles = new Vector3(0, thetas[4]*57.2958f, 0);
-		theta5.localEulerAngles = new Vector3(0, 0, thetas[5]*57.2958f);
-		theta6.localEulerAngles = new Vector3(0, thetas[6]*57.2958f, 0);
+		oldT[0] = theta0.localEulerAngles.y;
+		oldT[1] = theta1.localEulerAngles.z;
+		oldT[2] = theta2.localEulerAngles.y;
+		oldT[3] = theta3.localEulerAngles.z;
+		oldT[4] = theta4.localEulerAngles.y;
+		oldT[5] = theta5.localEulerAngles.z;
+		oldT[6] = theta6.localEulerAngles.y;
+
+		theta0.localEulerAngles = new Vector3(0, thetas[0] * 57.2958f, 0);
+		theta1.localEulerAngles = new Vector3(0, 0, thetas[1] * 57.2958f);
+		theta2.localEulerAngles = new Vector3(0, thetas[2] * 57.2958f, 0);
+		theta3.localEulerAngles = new Vector3(0, 0, thetas[3] * 57.2958f);
+		theta4.localEulerAngles = new Vector3(0, thetas[4] * 57.2958f, 0);
+		theta5.localEulerAngles = new Vector3(0, 0, thetas[5] * 57.2958f);
+		theta6.localEulerAngles = new Vector3(0, thetas[6] * 57.2958f, 0);
+
+		dt[0] = theta0.localEulerAngles.y - oldT[0];
+		dt[1] = theta1.localEulerAngles.z - oldT[1];
+		dt[2] = theta2.localEulerAngles.y - oldT[2];
+		dt[3] = theta3.localEulerAngles.z - oldT[3];
+		dt[4] = theta4.localEulerAngles.y - oldT[4];
+		dt[5] = theta5.localEulerAngles.z - oldT[5];
+		dt[6] = theta6.localEulerAngles.y - oldT[6];
+
+
+		//if (Math.Abs(dt[0]) > 0.0f) 
+		//{
+		if (frames == 10)
+		{
+			frames = 0;
+			for (int i = 0; i < 1; i++)
+			{
+				audioData[i].pitch =  /*Time.time **/ (Math.Abs(dt[i]) / sounddefidor + 2.0f > 5.0) ? 5.0f : Math.Abs(dt[i]) / sounddefidor + 2.0f;
+				//Debug.Log(Math.Abs(dt[i]) * 500 / 15.0f + 1.0f);
+				//audioData[i].volume = /*Time.time **/ (Math.Abs(dt[i]) > 0.001f) ? 0.1f : 0.0f;
+				//if (Math.Abs(dt[i]) > 0.0f) //audioData[0].Play();
+				//audioData[i].PlayOneShot(wheelSpin);
+				//audioData[i].volume = (Math.Abs(dt[i]) > 0) ? 0.1f : 0.0f;
+			}
+        }
+        else
+        {
+			frames++;
+        }
+			//audioData.Play(0);
+			//}
 	}
 
 	/// <summary> 	
