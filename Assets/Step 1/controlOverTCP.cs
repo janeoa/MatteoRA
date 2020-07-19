@@ -88,23 +88,23 @@ public class controlOverTCP : MonoBehaviour
 
 		//if (Math.Abs(dt[0]) > 0.0f) 
 		//{
-		if (frames == 10)
-		{
-			frames = 0;
-			for (int i = 0; i < 1; i++)
-			{
-				audioData[i].pitch =  /*Time.time **/ (Math.Abs(dt[i]) / sounddefidor + 2.0f > 5.0) ? 5.0f : Math.Abs(dt[i]) / sounddefidor + 2.0f;
-				//Debug.Log(Math.Abs(dt[i]) * 500 / 15.0f + 1.0f);
-				//audioData[i].volume = /*Time.time **/ (Math.Abs(dt[i]) > 0.001f) ? 0.1f : 0.0f;
-				//if (Math.Abs(dt[i]) > 0.0f) //audioData[0].Play();
-				//audioData[i].PlayOneShot(wheelSpin);
-				//audioData[i].volume = (Math.Abs(dt[i]) > 0) ? 0.1f : 0.0f;
-			}
-        }
-        else
-        {
-			frames++;
-        }
+		//if (frames == 10)
+		//{
+		//	frames = 0;
+		//	for (int i = 0; i < 1; i++)
+		//	{
+		//		audioData[i].pitch =  /*Time.time **/ (Math.Abs(dt[i]) / sounddefidor + 2.0f > 5.0) ? 5.0f : Math.Abs(dt[i]) / sounddefidor + 2.0f;
+		//		//Debug.Log(Math.Abs(dt[i]) * 500 / 15.0f + 1.0f);
+		//		//audioData[i].volume = /*Time.time **/ (Math.Abs(dt[i]) > 0.001f) ? 0.1f : 0.0f;
+		//		//if (Math.Abs(dt[i]) > 0.0f) //audioData[0].Play();
+		//		//audioData[i].PlayOneShot(wheelSpin);
+		//		//audioData[i].volume = (Math.Abs(dt[i]) > 0) ? 0.1f : 0.0f;
+		//	}
+  //      }
+  //      else
+  //      {
+		//	frames++;
+  //      }
 			//audioData.Play(0);
 			//}
 	}
