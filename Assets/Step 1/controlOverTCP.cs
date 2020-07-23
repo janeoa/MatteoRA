@@ -25,6 +25,13 @@ public class controlOverTCP : MonoBehaviour
 	public AudioClip wheelSpin;
 	private int frames = 0;
 
+
+	public float pitchMultiplier = 1f;                                          // Used for altering the pitch of audio clips
+	public float lowPitchMin = 1f;                                              // The lowest possible pitch for the low sounds
+	public float lowPitchMax = 6f;                                              // The highest possible pitch for the low sounds
+	public float highPitchMultiplier = 0.25f;                                   // Used for altering the pitch of high sounds
+
+
 	#region private members 	
 	/// <summary> 	
 	/// TCPListener to listen for incomming TCP connection 	
@@ -85,29 +92,18 @@ public class controlOverTCP : MonoBehaviour
 		dt[5] = theta5.localEulerAngles.z - oldT[5];
 		dt[6] = theta6.localEulerAngles.y - oldT[6];
 
+		float pitch0 = Mathf.Min(lowPitchMax, ULerp(lowPitchMin, lowPitchMax, dt[0]));
+		m_HighAccel.pitch = pitch0 * pitchMultiplier * highPitchMultiplier;
+		m_HighAccel.dopplerLevel = 0;
+		m_HighAccel.volume = 1;
 
-		//if (Math.Abs(dt[0]) > 0.0f) 
-		//{
-		//if (frames == 10)
-		//{
-		//	frames = 0;
-		//	for (int i = 0; i < 1; i++)
-		//	{
-		//		audioData[i].pitch =  /*Time.time **/ (Math.Abs(dt[i]) / sounddefidor + 2.0f > 5.0) ? 5.0f : Math.Abs(dt[i]) / sounddefidor + 2.0f;
-		//		//Debug.Log(Math.Abs(dt[i]) * 500 / 15.0f + 1.0f);
-		//		//audioData[i].volume = /*Time.time **/ (Math.Abs(dt[i]) > 0.001f) ? 0.1f : 0.0f;
-		//		//if (Math.Abs(dt[i]) > 0.0f) //audioData[0].Play();
-		//		//audioData[i].PlayOneShot(wheelSpin);
-		//		//audioData[i].volume = (Math.Abs(dt[i]) > 0) ? 0.1f : 0.0f;
-		//	}
-  //      }
-  //      else
-  //      {
-		//	frames++;
-  //      }
-			//audioData.Play(0);
-			//}
 	}
+	private AudioSource m_LowAccel; // Source for the low acceleration sounds
+	private AudioSource m_LowDecel; // Source for the low deceleration sounds
+	private AudioSource m_HighAccel; // Source for the high acceleration sounds
+	private AudioSource m_HighDecel; // Source for the high deceleration sounds
+	private bool m_StartedSound; // flag for knowing if we have started sounds
+
 
 	/// <summary> 	
 	/// Runs in background TcpServerThread; Handles incomming TcpClient requests 	
@@ -178,5 +174,10 @@ public class controlOverTCP : MonoBehaviour
 		for (int i = 0; i < NumberChars; i += 2)
 			bytes[i / 2] = Convert.ToByte(hex.Substring(i, 2), 16);
 		return bytes;
+	}
+
+	private static float ULerp(float from, float to, float value)
+	{
+		return (1.0f - value) * from + value * to;
 	}
 }
