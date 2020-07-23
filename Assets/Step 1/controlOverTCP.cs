@@ -12,13 +12,14 @@ public class controlOverTCP : MonoBehaviour
 {
 	public float sounddefidor = 5.0f;
 	public float[] thetas;
-	public Transform theta0;
-	public Transform theta1;
-	public Transform theta2;
-	public Transform theta3;
-	public Transform theta4;
-	public Transform theta5;
-	public Transform theta6;
+	public Transform[] theta;
+	// public Transform theta[0];
+	// public Transform theta[1];
+	// public Transform theta[2];
+	// public Transform theta[3];
+	// public Transform theta[4];
+	// public Transform theta[5];
+	// public Transform theta[6];
 	public float[] dt;
 	public float[] oldT;
 	public AudioSource[] audioData;
@@ -54,6 +55,7 @@ public class controlOverTCP : MonoBehaviour
 		thetas = new float[7];
 		dt = new float[7];
 		oldT = new float[7];
+		theta = new Transform[7];
 		//audioData = new AudioSource[7];
 
 		// Start TcpServer background thread 		
@@ -68,29 +70,29 @@ public class controlOverTCP : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		oldT[0] = theta0.localEulerAngles.y;
-		oldT[1] = theta1.localEulerAngles.z;
-		oldT[2] = theta2.localEulerAngles.y;
-		oldT[3] = theta3.localEulerAngles.z;
-		oldT[4] = theta4.localEulerAngles.y;
-		oldT[5] = theta5.localEulerAngles.z;
-		oldT[6] = theta6.localEulerAngles.y;
+		oldT[0] = theta[0].localEulerAngles.y;
+		oldT[1] = theta[1].localEulerAngles.z;
+		oldT[2] = theta[2].localEulerAngles.y;
+		oldT[3] = theta[3].localEulerAngles.z;
+		oldT[4] = theta[4].localEulerAngles.y;
+		oldT[5] = theta[5].localEulerAngles.z;
+		oldT[6] = theta[6].localEulerAngles.y;
 
-		theta0.localEulerAngles = new Vector3(0, thetas[0] * 57.2958f, 0);
-		theta1.localEulerAngles = new Vector3(0, 0, thetas[1] * 57.2958f);
-		theta2.localEulerAngles = new Vector3(0, thetas[2] * 57.2958f, 0);
-		theta3.localEulerAngles = new Vector3(0, 0, thetas[3] * 57.2958f);
-		theta4.localEulerAngles = new Vector3(0, thetas[4] * 57.2958f, 0);
-		theta5.localEulerAngles = new Vector3(0, 0, thetas[5] * 57.2958f);
-		theta6.localEulerAngles = new Vector3(0, thetas[6] * 57.2958f, 0);
+		theta[0].localEulerAngles = new Vector3(0, thetas[0] * 57.2958f, 0);
+		theta[1].localEulerAngles = new Vector3(0, 0, thetas[1] * 57.2958f);
+		theta[2].localEulerAngles = new Vector3(0, thetas[2] * 57.2958f, 0);
+		theta[3].localEulerAngles = new Vector3(0, 0, thetas[3] * 57.2958f);
+		theta[4].localEulerAngles = new Vector3(0, thetas[4] * 57.2958f, 0);
+		theta[5].localEulerAngles = new Vector3(0, 0, thetas[5] * 57.2958f);
+		theta[6].localEulerAngles = new Vector3(0, thetas[6] * 57.2958f, 0);
 
-		dt[0] = theta0.localEulerAngles.y - oldT[0];
-		dt[1] = theta1.localEulerAngles.z - oldT[1];
-		dt[2] = theta2.localEulerAngles.y - oldT[2];
-		dt[3] = theta3.localEulerAngles.z - oldT[3];
-		dt[4] = theta4.localEulerAngles.y - oldT[4];
-		dt[5] = theta5.localEulerAngles.z - oldT[5];
-		dt[6] = theta6.localEulerAngles.y - oldT[6];
+		dt[0] = theta[0].localEulerAngles.y - oldT[0];
+		dt[1] = theta[1].localEulerAngles.z - oldT[1];
+		dt[2] = theta[2].localEulerAngles.y - oldT[2];
+		dt[3] = theta[3].localEulerAngles.z - oldT[3];
+		dt[4] = theta[4].localEulerAngles.y - oldT[4];
+		dt[5] = theta[5].localEulerAngles.z - oldT[5];
+		dt[6] = theta[6].localEulerAngles.y - oldT[6];
 
 		float pitch0 = Mathf.Min(lowPitchMax, ULerp(lowPitchMin, lowPitchMax, dt[0]));
 		m_HighAccel.pitch = pitch0 * pitchMultiplier * highPitchMultiplier;
