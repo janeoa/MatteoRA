@@ -52,10 +52,10 @@ public class controlOverTCP : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
-		thetas = new float[7];
+		//thetas = new float[7];
 		dt = new float[7];
 		oldT = new float[7];
-		theta = new Transform[7];
+		//theta = new Transform[7];
 		//audioData = new AudioSource[7];
 
 		// Start TcpServer background thread 		
