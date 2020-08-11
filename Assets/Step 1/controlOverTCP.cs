@@ -20,11 +20,11 @@ public class controlOverTCP : MonoBehaviour
 	// public Transform theta[4];
 	// public Transform theta[5];
 	// public Transform theta[6];
-	public float[] dt;
-	public float[] oldT;
-	public AudioSource[] audioData;
-	public AudioClip wheelSpin;
-	private int frames = 0;
+	// public float[] dt;
+	// public float[] oldT;
+	// // public AudioSource[] audioData;
+	// // public AudioClip wheelSpin;
+	// private int frames = 0;
 
 
 	public float pitchMultiplier = 1f;                                          // Used for altering the pitch of audio clips
@@ -53,8 +53,8 @@ public class controlOverTCP : MonoBehaviour
 	void Start()
 	{
 		//thetas = new float[7];
-		dt = new float[7];
-		oldT = new float[7];
+		// dt = new float[7];
+		// oldT = new float[7];
 		//theta = new Transform[7];
 		//audioData = new AudioSource[7];
 
@@ -70,13 +70,13 @@ public class controlOverTCP : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		oldT[0] = theta[0].localEulerAngles.y;
-		oldT[1] = theta[1].localEulerAngles.z;
-		oldT[2] = theta[2].localEulerAngles.y;
-		oldT[3] = theta[3].localEulerAngles.z;
-		oldT[4] = theta[4].localEulerAngles.y;
-		oldT[5] = theta[5].localEulerAngles.z;
-		oldT[6] = theta[6].localEulerAngles.y;
+		// oldT[0] = theta[0].localEulerAngles.y;
+		// oldT[1] = theta[1].localEulerAngles.z;
+		// oldT[2] = theta[2].localEulerAngles.y;
+		// oldT[3] = theta[3].localEulerAngles.z;
+		// oldT[4] = theta[4].localEulerAngles.y;
+		// oldT[5] = theta[5].localEulerAngles.z;
+		// oldT[6] = theta[6].localEulerAngles.y;
 
 		theta[0].localEulerAngles = new Vector3(0, thetas[0] * 57.2958f, 0);
 		theta[1].localEulerAngles = new Vector3(0, 0, thetas[1] * 57.2958f);
@@ -86,13 +86,13 @@ public class controlOverTCP : MonoBehaviour
 		theta[5].localEulerAngles = new Vector3(0, 0, thetas[5] * 57.2958f);
 		theta[6].localEulerAngles = new Vector3(0, thetas[6] * 57.2958f, 0);
 
-		dt[0] = theta[0].localEulerAngles.y - oldT[0];
-		dt[1] = theta[1].localEulerAngles.z - oldT[1];
-		dt[2] = theta[2].localEulerAngles.y - oldT[2];
-		dt[3] = theta[3].localEulerAngles.z - oldT[3];
-		dt[4] = theta[4].localEulerAngles.y - oldT[4];
-		dt[5] = theta[5].localEulerAngles.z - oldT[5];
-		dt[6] = theta[6].localEulerAngles.y - oldT[6];
+		// dt[0] = theta[0].localEulerAngles.y - oldT[0];
+		// dt[1] = theta[1].localEulerAngles.z - oldT[1];
+		// dt[2] = theta[2].localEulerAngles.y - oldT[2];
+		// dt[3] = theta[3].localEulerAngles.z - oldT[3];
+		// dt[4] = theta[4].localEulerAngles.y - oldT[4];
+		// dt[5] = theta[5].localEulerAngles.z - oldT[5];
+		// dt[6] = theta[6].localEulerAngles.y - oldT[6];
 
 		// float pitch0 = Mathf.Min(lowPitchMax, ULerp(lowPitchMin, lowPitchMax, dt[0]));
 		// m_HighAccel.pitch = pitch0 * pitchMultiplier * highPitchMultiplier;
@@ -115,7 +115,7 @@ public class controlOverTCP : MonoBehaviour
 		try
 		{
 			// Create listener on localhost port 8052. 			
-			tcpListener = new TcpListener(IPAddress.Parse("127.0.0.1"), 7979);
+			tcpListener = new TcpListener(IPAddress.Parse("192.168.1.137"), 7979);
 			tcpListener.Start();
 			Debug.Log("Server is listening");
 			Byte[] bytes = new Byte[1024];
