@@ -94,17 +94,17 @@ public class controlOverTCP : MonoBehaviour
 		dt[5] = theta[5].localEulerAngles.z - oldT[5];
 		dt[6] = theta[6].localEulerAngles.y - oldT[6];
 
-		float pitch0 = Mathf.Min(lowPitchMax, ULerp(lowPitchMin, lowPitchMax, dt[0]));
-		m_HighAccel.pitch = pitch0 * pitchMultiplier * highPitchMultiplier;
-		m_HighAccel.dopplerLevel = 0;
-		m_HighAccel.volume = 1;
+		// float pitch0 = Mathf.Min(lowPitchMax, ULerp(lowPitchMin, lowPitchMax, dt[0]));
+		// m_HighAccel.pitch = pitch0 * pitchMultiplier * highPitchMultiplier;
+		// m_HighAccel.dopplerLevel = 0;
+		// m_HighAccel.volume = 1;
 
 	}
-	private AudioSource m_LowAccel; // Source for the low acceleration sounds
-	private AudioSource m_LowDecel; // Source for the low deceleration sounds
-	private AudioSource m_HighAccel; // Source for the high acceleration sounds
-	private AudioSource m_HighDecel; // Source for the high deceleration sounds
-	private bool m_StartedSound; // flag for knowing if we have started sounds
+	// private AudioSource m_LowAccel; // Source for the low acceleration sounds
+	// private AudioSource m_LowDecel; // Source for the low deceleration sounds
+	// private AudioSource m_HighAccel; // Source for the high acceleration sounds
+	// private AudioSource m_HighDecel; // Source for the high deceleration sounds
+	// private bool m_StartedSound; // flag for knowing if we have started sounds
 
 
 	/// <summary> 	
