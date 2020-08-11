@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
-// using Sort;
+ using Sort;
 // using String;
 
 public class localSound : MonoBehaviour
@@ -51,12 +51,17 @@ public class localSound : MonoBehaviour
         float averageRad = averageSpeed * Mathf.PI / 180.0f;
         
         ass.volume = Mathf.Sign(Mathf.Abs(averageSpeed)-0.01f);
-        ass.pitch = Mathf.Abs(averageRad);
+        ass.pitch = Mathf.Abs(averageRad)/5.0f+0.5f;
 
         // var sorter = new QuickSort<float>();
-        // float[] toSort = last10vel;
+        // float[] toSort = new float[last10vel.Length];
+        // for(int i=0; i<last10vel.Length; i++){
+        //     toSort[i] = last10vel[i];
+        // }
         // sorter.Sort(toSort);
         // meadianSpeed = toSort[5];
+
+        // ass.pitch = Mathf.Abs(meadianSpeed)/5.0f+0.5f;
         
         //File.AppendAllText("Saved_data.csv", string.Concat(Time.time.ToString(),", ", last10pos[last10pos.Length-1],", ", averageSpeed,", ", meadianSpeed, "\n"));
     }
