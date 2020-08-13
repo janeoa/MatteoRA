@@ -51,7 +51,7 @@ public class localSound : MonoBehaviour
         float averageRad = averageSpeed * Mathf.PI / 180.0f;
         
         ass.volume = Mathf.Sign(Mathf.Abs(averageSpeed)-0.01f);
-        ass.pitch = Mathf.Abs(averageRad)/5.0f+0.5f;
+        ass.pitch = Mathf.Abs(averageRad);
 
         // var sorter = new QuickSort<float>();
         // float[] toSort = new float[last10vel.Length];
