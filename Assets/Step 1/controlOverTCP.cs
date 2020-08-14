@@ -115,7 +115,8 @@ public class controlOverTCP : MonoBehaviour
 		try
 		{
 			// Create listener on localhost port 8052. 			
-			tcpListener = new TcpListener(IPAddress.Parse("192.168.1.137"), 7979);
+			// tcpListener = new TcpListener(IPAddress.Parse("192.168.1.137"), 7979);
+			tcpListener = new TcpListener(IPAddress.Parse("192.168.1.140"), 7979);
 			tcpListener.Start();
 			Debug.Log("Server is listening");
 			Byte[] bytes = new Byte[1024];
